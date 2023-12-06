@@ -1,0 +1,48 @@
+.pageStyles {
+    align-items: center;
+    background-color: #282c34;
+    display: flex;
+    height: calc(100vh - 96px);
+    justify-content: center;
+    left: 0px;
+    margin: 48px 0px;
+    position: absolute;
+    top: 0px;
+    width: calc(100vw);
+  }
+  
+.chatStyles {
+    background-color: #333;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 48px);
+    width: calc(100% - 48px);
+  }
+  
+.headerStyles {
+    background: #323742;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    text-align: center;
+  }
+  
+.listStyles {
+    align-items: flex-start;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+    padding: 10px;
+  }
+  
+.messageStyles {
+    background-color: #eee;
+    border-radius: 5px;
+    color: #333;
+    font-size: 1.1rem;
+    margin: 5px;
+    padding: 8px 15px;
+  }
+  

@@ -3,4 +3,16 @@
     color: #fff;
     height: 100%;
     width: 100%;
+
+    .logButton {
+        background-color: rgb(39, 39, 97);
+        height: 36px;
+        position: absolute;
+        right: 6px;
+        top: 6px;
+
+        &.turnedOn {
+        background-color: #632121;
+        }
+    }
 }
