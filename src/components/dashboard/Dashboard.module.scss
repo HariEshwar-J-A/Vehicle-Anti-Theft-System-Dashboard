@@ -1,0 +1,51 @@
+.dashboard {
+    background-color: #000;
+    display: flex;
+    min-height: calc(100vh - 96px);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    .presenceIndicator {
+        display: flex;
+        height: fit-content;
+        margin: 24px;
+        min-width: 240px;
+
+
+        .indicatorLabel {
+            margin: 24px;
+        }
+        
+        .led {
+            background-color: #f00;
+            border-radius: 50%;
+            box-shadow: 0 0 5px 5px #900;
+            height: 24px;
+            margin: 24px;
+            width: 24px;
+
+            &.turnedOn {
+                background-color: #0f0;
+                box-shadow: 0 0 5px 5px #090;
+            }
+        }
+    }
+
+    .statusIndicator {
+        display: flex;
+        height: fit-content;
+        margin: 24px;
+
+        .currentState {
+            margin: 24px;
+            margin-right: 12px;
+        }
+
+        .currentStateValue {
+            margin: 24px;
+            margin-left: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+    }
+}
