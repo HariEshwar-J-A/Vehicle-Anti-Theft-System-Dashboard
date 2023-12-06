@@ -1,9 +1,10 @@
 .dashboard {
+    align-items: center;
     background-color: #000;
     display: flex;
-    min-height: calc(100vh - 96px);
     flex-wrap: wrap;
     justify-content: space-between;
+    min-height: calc(100vh - 96px);
     
     .presenceIndicator {
         display: flex;
