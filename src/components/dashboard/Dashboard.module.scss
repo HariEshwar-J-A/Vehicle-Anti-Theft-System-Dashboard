@@ -3,8 +3,15 @@
     background-color: #000;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    font-size: 20px;
+    justify-content: center;
     min-height: calc(100vh - 96px);
+
+    > div {
+        width: 400px;
+        display: flex;
+        justify-content: space-between;
+    }
     
     .presenceIndicator {
         display: flex;

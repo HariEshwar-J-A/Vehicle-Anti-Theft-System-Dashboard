@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styles from './Dashboard.module.scss'
 
 const Dashboard = ({
@@ -20,7 +20,7 @@ const Dashboard = ({
       <AlarmIndicator isAlarmOn={isAlarmOn}/>
       <CurrentStateIndicator currentState={currentState}/>
       <EngineOnIndicator isEngineOn={isEngineOn}/>
-      <BrakeOverRiddenIndicator isBrakeOverridden={isBrakeOverridden}/>
+      <BrakeOverriddenIndicator isBrakeOverridden={isBrakeOverridden}/>
     </div>
   )
 }
@@ -43,7 +43,7 @@ const CurrentStateIndicator = ({currentState}) => {
   return (
     <div className={styles.statusIndicator}>
       <div className={styles.currentState}>Current State:</div>
-      <div className={styles.currentStateValue}>{currentState}</div>
+      <div className={styles.currentStateValue}>{currentState} Mode</div>
     </div>
   )
 }
@@ -54,7 +54,7 @@ const DriverAuthenticatedIndicator = ({userName}) => {
       <div className={styles.indicatorLabel}>Driver Authenticated: </div>
       <div
         className={`${styles.led} ${
-          userName !== "None" ? styles.turnedOn : ''
+          (userName !== null && userName !== 'Unrecognized Face')? styles.turnedOn : ''
         }`}
       ></div>
     </div>
@@ -64,7 +64,7 @@ const DriverAuthenticatedIndicator = ({userName}) => {
 const EngineOnIndicator = ({isEngineOn}) => {
   return (
     <div className={styles.presenceIndicator}>
-      <div className={styles.indicatorLabel}>Driver Authenticated: </div>
+      <div className={styles.indicatorLabel}>Engine Status: </div>
       <div
         className={`${styles.led} ${
           isEngineOn ? styles.turnedOn : ''
@@ -74,10 +74,10 @@ const EngineOnIndicator = ({isEngineOn}) => {
   )
 }
 
-const BrakeOverRiddenIndicator = ({isBrakeOverridden}) => {
+const BrakeOverriddenIndicator = ({isBrakeOverridden}) => {
   return (
     <div className={styles.presenceIndicator}>
-      <div className={styles.indicatorLabel}>Driver Authenticated: </div>
+      <div className={styles.indicatorLabel}>Brake Override Status: </div>
       <div
         className={`${styles.led} ${
           isBrakeOverridden ? styles.turnedOn : ''
@@ -92,6 +92,7 @@ const AlarmIndicator = ({isAlarmOn}) => {
   useEffect(() => {
     if (isAlarmOn) {
       const notify = new Notification('Alarm Activated, Check your Car!')
+      notify.close()
     }
   }, [isAlarmOn])
 
