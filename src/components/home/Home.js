@@ -10,30 +10,29 @@ import Button from '@mui/material/Button'
 import styles from './Home.module.scss'
 
 const Home = () => {
-  const [isLogsOpen, setIsLogsOpen] = useState(true)
-
-  const toggleLogsWindow = () => setIsLogsOpen(prevState => !prevState)
-
+  const [isLogsOpen, setIsLogsOpen] = useState(false)
   const pubnub = usePubNub()
   const [channels] = useState([process.env.REACT_APP_CHANNEL])
   const [messages, addMessage] = useState([])
-  const [currentState, setCurrentState] = useState('Lock Mode');
+  const [currentState, setCurrentState] = useState('Lock');
   const [isBrakeOverridden, setIsBrakeOverridden] = useState(false);
   const [isAlarmOn, setIsAlarmOn] = useState(false);
   const [isEngineOn, setIsEngineOn] = useState(false);
   const [timeStamp, setTimeStamp] = useState('');
   const [rawData, setRawData] = useState({});
-  const [userName, setUserName] = useState('None');
+  const [userName, setUserName] = useState(null);
   const [userPresence, setUserPresence] = useState(false);
 
+  const toggleLogsWindow = () => setIsLogsOpen(prevState => !prevState)
+  
   const handleMessage = event => {
     const message = event.message
-    console.log(typeof message)
+    console.log(message)
 
-    if (typeof message === 'string' || message.hasOwnProperty('messageType')) {
+    if (message['messageType']) {
       
-      const jsonMessage = JSON.parse(message);
-      console.log(jsonMessage)
+      const jsonMessage = message;
+      console.log("message received!")
       
       const messageType = jsonMessage.messageType;
       const receivedCurrentState = jsonMessage.currentState;
@@ -63,13 +62,15 @@ const Home = () => {
         default:
           break
       }
+
+      addMessage(messages => [...messages.slice(0, 99), JSON.stringify(message)])
     }
 
-    if (typeof message === 'string' || message.hasOwnProperty('text')) {
-      const text = message.text || message
-      addMessage(messages => [...messages.slice(0, 99), text])
-    }
   }
+
+useEffect(() => {
+  Notification.requestPermission().then((perm) => console.log(perm));
+}, [])
 
   useEffect(() => {
     const listenerParams = { message: handleMessage }
