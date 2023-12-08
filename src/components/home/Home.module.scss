@@ -15,4 +15,16 @@
         background-color: #632121;
         }
     }
+
+    .mapButton {
+        background-color: rgb(39, 39, 97);
+        height: 36px;
+        position: absolute;
+        left: 6px;
+        top: 6px;
+
+        &.turnedOn {
+        background-color: #632121;
+        }
+    }
 }

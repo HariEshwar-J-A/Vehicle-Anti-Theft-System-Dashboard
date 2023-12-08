@@ -1,0 +1,9 @@
+.mapContainer {
+    background-color: aliceblue;
+    position: absolute;
+    height: calc(100vh - 96px);
+    width: calc(100vw - 48px);
+    margin: 48px 24px;
+    overflow: hidden;
+    top: 0px;
+}

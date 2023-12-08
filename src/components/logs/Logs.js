@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 
-import styles from './Logs.module.scss';
+import styles from "./Logs.module.scss";
 
-const Logs = ({messages}) => {
-
+const Logs = ({ messages }) => {
   return (
     <div className={styles.pageStyles}>
       <div className={styles.chatStyles}>
@@ -14,12 +13,12 @@ const Logs = ({messages}) => {
               <div key={`message-${index}`} className={styles.messageStyles}>
                 {message}
               </div>
-            )
+            );
           })}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Logs
+export default Logs;
