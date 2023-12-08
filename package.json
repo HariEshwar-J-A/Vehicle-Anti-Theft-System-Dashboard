@@ -2,6 +2,7 @@
   "name": "vehicle-anti-theft-system-dashboard",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://harieshwar-j-a.github.io/vehicle-anti-theft-system-dashboard/",
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
