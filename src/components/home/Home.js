@@ -73,7 +73,7 @@ const Home = () => {
       }
 
       addMessage((messages) => [
-        ...messages.slice(0, 99),
+        ...messages.slice(1, 100),
         JSON.stringify(message),
       ]);
     }
