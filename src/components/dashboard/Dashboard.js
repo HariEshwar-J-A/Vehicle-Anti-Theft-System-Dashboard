@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import styles from './Dashboard.module.scss'
+import React, { useEffect } from "react";
+import styles from "./Dashboard.module.scss";
 
 const Dashboard = ({
   currentState,
@@ -9,101 +9,93 @@ const Dashboard = ({
   timeStamp,
   rawData,
   userName,
-  userPresence
+  userPresence,
 }) => {
-
-
   return (
     <div className={styles.dashboard}>
       <DriverPresenceIndicator userPresence={userPresence} />
-      <DriverAuthenticatedIndicator userName={userName}/>
-      <AlarmIndicator isAlarmOn={isAlarmOn}/>
-      <CurrentStateIndicator currentState={currentState}/>
-      <EngineOnIndicator isEngineOn={isEngineOn}/>
-      <BrakeOverriddenIndicator isBrakeOverridden={isBrakeOverridden}/>
+      <DriverAuthenticatedIndicator userName={userName} />
+      <AlarmIndicator isAlarmOn={isAlarmOn} />
+      <CurrentStateIndicator currentState={currentState} />
+      <EngineOnIndicator isEngineOn={isEngineOn} />
+      <BrakeOverriddenIndicator isBrakeOverridden={isBrakeOverridden} />
     </div>
-  )
-}
+  );
+};
 
-const DriverPresenceIndicator = ({userPresence}) => {
-
+const DriverPresenceIndicator = ({ userPresence }) => {
   return (
     <div className={styles.presenceIndicator}>
       <div className={styles.indicatorLabel}>Human in Car:</div>
       <div
-        className={`${styles.led} ${userPresence ? styles.turnedOn : ''}`}
+        className={`${styles.led} ${userPresence ? styles.turnedOn : ""}`}
       ></div>
     </div>
-  )
-}
+  );
+};
 
-const CurrentStateIndicator = ({currentState}) => {
-
-
+const CurrentStateIndicator = ({ currentState }) => {
   return (
     <div className={styles.statusIndicator}>
       <div className={styles.currentState}>Current State:</div>
       <div className={styles.currentStateValue}>{currentState} Mode</div>
     </div>
-  )
-}
+  );
+};
 
-const DriverAuthenticatedIndicator = ({userName}) => {
+const DriverAuthenticatedIndicator = ({ userName }) => {
   return (
     <div className={styles.presenceIndicator}>
       <div className={styles.indicatorLabel}>Driver Authenticated: </div>
       <div
         className={`${styles.led} ${
-          (userName !== null && userName !== 'Unrecognized Face')? styles.turnedOn : ''
+          userName !== null && userName !== "Unrecognized Face"
+            ? styles.turnedOn
+            : ""
         }`}
       ></div>
     </div>
-  )
-}
+  );
+};
 
-const EngineOnIndicator = ({isEngineOn}) => {
+const EngineOnIndicator = ({ isEngineOn }) => {
   return (
     <div className={styles.presenceIndicator}>
       <div className={styles.indicatorLabel}>Engine Status: </div>
       <div
-        className={`${styles.led} ${
-          isEngineOn ? styles.turnedOn : ''
-        }`}
+        className={`${styles.led} ${isEngineOn ? styles.turnedOn : ""}`}
       ></div>
     </div>
-  )
-}
+  );
+};
 
-const BrakeOverriddenIndicator = ({isBrakeOverridden}) => {
+const BrakeOverriddenIndicator = ({ isBrakeOverridden }) => {
   return (
     <div className={styles.presenceIndicator}>
       <div className={styles.indicatorLabel}>Brake Override Status: </div>
       <div
-        className={`${styles.led} ${
-          isBrakeOverridden ? styles.turnedOn : ''
-        }`}
+        className={`${styles.led} ${isBrakeOverridden ? styles.turnedOn : ""}`}
       ></div>
     </div>
-  )
-}
+  );
+};
 
-const AlarmIndicator = ({isAlarmOn}) => {
-
+const AlarmIndicator = ({ isAlarmOn }) => {
   useEffect(() => {
     if (isAlarmOn) {
-      const notify = new Notification('Alarm Activated, Check your Car!')
-      notify.close()
+      const notify = new Notification("Alarm Activated, Check your Car!");
+      notify.close();
     }
-  }, [isAlarmOn])
+  }, [isAlarmOn]);
 
   return (
     <div className={styles.presenceIndicator}>
       <div className={styles.indicatorLabel}>Is Alarm Turned On: </div>
       <div
-        className={`${styles.led} ${isAlarmOn ? styles.turnedOn : ''}`}
+        className={`${styles.led} ${isAlarmOn ? styles.turnedOn : ""}`}
       ></div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;
